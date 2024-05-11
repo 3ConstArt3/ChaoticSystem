@@ -49,13 +49,16 @@ class ChaoticSystem
   /* Function definition */
   public void animate()
   {
-    this.controlSystem();
+    if (this.points != null)
+    {
+      this.controlSystem();
 
-    var delta = this.utility.getDeltaVector(this.position, this.params);
-    delta.mult(this.deltaTime);
-    this.position.add(delta);
+      var delta = this.utility.getDeltaVector(this.position, this.params);
+      delta.mult(this.deltaTime);
+      this.position.add(delta);
 
-    this.points.add(this.position.copy());
+      this.points.add(this.position.copy());
+    }
   }
 
   private void controlSystem()
